@@ -8,44 +8,62 @@ def rainaverage(a):
     count=0
     avg=0
     suma=0
-    rain_dictionary={}
+    rain_sum={}
     
     for m in range(0,len(a)):
         city.append(a[m][0])
         annual_rain.append(a[m][1])
 
-    print(city)
-    print(annual_rain)
-    
-    for same_city in range(0,len(city)):
+   
+
+    for same in range(0,len(city)):
         count=0
         suma=0
-        avg=0
         flag=0
-        suma=annual_rain[same_city]
-        print(suma)
-        check_duplicate.append(city[same_city])
+        suma=annual_rain[same]  
+        check_duplicate.append(city[same])
 
-        for repeat_2 in check_duplicate:
-            if city[same_city]==repeat_2:
-                count=count+1
-                trial[city[same_city]]=count
-            for we_got_you in trial.values():
-                if we_got_you==1:
-                    flag==1
         
-#Something is wrong here.
-        for same_city_again in range(same_city+1,len(city)):
-            if city[same_city]==city[same_city_again]:
-                suma=suma+annual_rain[same_city_again]
-                rain_dictionary[city[same_city]]=suma
-            elif count==1:    #here we included the player who played only once (because it was not included in the if condition)
-                rain_dictionary[city[same_city]]=suma
+        for repeat_2 in check_duplicate:
             
-                    
-    print(trial)
-    print(rain_dictionary)    
+            if city[same]==repeat_2:
+                count=count+1                
+                trial[city[same]]=count
+            for we_got_you_too in trial.values():
+                if we_got_you_too==1:
+                    flag=1    
 
+        for yessame in range(same+1,len(city)):
+            if city[same]==city[yessame]:
+                suma=suma+annual_rain[yessame]
+                rain_sum[city[same]]=suma
+            elif count==1:    
+                rain_sum[city[same]]=suma
 
+    v=list(rain_sum.values())    
+    k=list(rain_sum.keys())
+    c=list(trial.values()) 
+    final_list=[]
+    final_final_list=[]
+    for i in range(0,len(v)):
+        final_list.append(float(v[i]/c[i]))
+       
+    final_final_dict={}
+    final_final_dict_sorted={}
+    for j in range(0,len(k)):
+        final_final_dict[k[j]]=final_list[j]
+    for key in sorted(final_final_dict):
+        final_final_dict_sorted[key]=final_final_dict[key]
 
-rainaverage([("city1",2),("city1",3),("city2",3),("city1",1),("city3",8)])
+    v2=list(final_final_dict_sorted.values())
+    k2=list(final_final_dict_sorted.keys())
+    for h in range (0,len(v2)):
+        final_final_list.append((k2[h],v2[h]))
+    return final_final_list
+        
+
+b=rainaverage([('Bombay',848),('Madras',103),('Bombay',923),('Bangalore',201),('Madras',128)])
+print(b)
+
+#The following test case is not satisfied
+#rainaverage([(1,2),(1,3),(2,3),(1,1),(3,8)])
