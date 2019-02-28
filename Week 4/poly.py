@@ -22,8 +22,7 @@ def addpoly(p1,p2):
         for j in range(0,len(p2e)):
             if p1e[i]==p2e[j]:
                 result.append((p1c[i]+p2c[j],p1e[i]))
-            else:
-                result.append((p1c[i]+p2c[j],p1e[i]))
+            elif 
 
     return result    
 
