@@ -35,7 +35,7 @@ def orangecap(a):
                     flag=1
         #this loop is made to calculate the total scores
         for yessame in range(same+1,len(players)):
-            if players[same].lower()==players[yessame].lower():
+            if players[same]==players[yessame]:
                 suma=suma+scores[yessame]
                 #print(suma)
                 player_sum[players[same]]=suma
@@ -46,5 +46,9 @@ def orangecap(a):
     i=v.index(max(v))   #max value is found and index is stored
     return (k[i],v[i])  #returned the pair as asked in the question
 
-player=orangecap({'match1':{'player1':57, 'player2':38}, 'match2':{'player3':9, 'player1':42}, 'match3':{'player2':41, 'player4':63, 'player3':91}})
+player=orangecap()
 print(player)
+
+#test inputs
+#{'match1':{'player1':57, 'player2':138}, 'match2':{'player3':9, 'player1':42}, 'match3':{'player2':41, 'player4':63, 'player3':91}}
+#{'match1':{'player1':57, 'player2':38}, 'match2':{'player3':9, 'player1':42}, 'match3':{'player2':41, 'player4':63, 'player3':91},'test1':{'Ashwin':84, 'Kohli':120}, #'test2':{'ashwin':59, 'Pujara':42}}
